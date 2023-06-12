@@ -15,14 +15,17 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
     @Bean
     public MemberService memberService(){
+        System.out.println("Call AppConfig memberSerivce");
         return new MemberServiceImpl(memberRepository());
     }
     @Bean
-    public static MemoryMemberRepository memberRepository() {
+    public MemoryMemberRepository memberRepository() {
+        System.out.println("Call AppConfig memberRepository");
         return new MemoryMemberRepository();
     }
     @Bean
     public OrderService orderService(){
+        System.out.println("Call AppConfig orderService");
         return  new OrderServiceImpl(memberRepository(), discountPolicy()); // Ctrl + Alt + M : Extract Method
     }
     @Bean
